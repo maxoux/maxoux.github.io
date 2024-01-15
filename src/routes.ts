@@ -1,5 +1,4 @@
-import AppVue from './App.vue';
-import HelloWorldVue from './components/HelloWorld.vue';
+import HelloWorldVue from './components/DebugWidget.vue';
 import HomeVue from './views/Home.vue';
 
 export const routes = [
