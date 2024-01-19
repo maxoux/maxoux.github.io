@@ -8,6 +8,13 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import * as Icons from '@fortawesome/free-solid-svg-icons';
 
+declare global {
+  interface ObjectConstructor {
+    typedKeys<T>(obj: T): Array<keyof T>;
+  }
+}
+Object.typedKeys = Object.keys as any;
+
 function isIconDefinition(
   obj: Icons.IconPack | Icons.IconDefinition | Icons.IconPrefix,
 ): obj is Icons.IconDefinition {

@@ -1,22 +1,26 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import BasicLayout from './BasicLayout.vue';
+</script>
 
 <template>
-  <div class="layout">
-    <div class="container_text">
-      <div class="content">
-        <slot name="top"></slot>
+  <BasicLayout>
+    <div class="action_layout">
+      <div class="container_text">
+        <div class="content">
+          <slot name="top"></slot>
+        </div>
+      </div>
+      <div class="container_actions">
+        <div class="content">
+          <slot name="bottom"></slot>
+        </div>
       </div>
     </div>
-    <div class="container_actions">
-      <div class="content">
-        <slot name="bottom"></slot>
-      </div>
-    </div>
-  </div>
+  </BasicLayout>
 </template>
 
 <style lang="scss" scoped>
-  .layout {
+  .action_layout {
     display: flex;
     flex-direction: column;
     height: calc(100% - 60px);
