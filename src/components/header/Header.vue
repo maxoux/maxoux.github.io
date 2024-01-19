@@ -27,9 +27,10 @@
     left: 0;
     width: 100%;
     height: 60px;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(6px);
     display: flex;
     justify-content: space-between;
+    z-index: 100;
 
     .left {
       color: white;
@@ -47,7 +48,6 @@
         z-index: 15;
         margin-right: 20px;
         font-size: 25px;
-        color: white;
         opacity: 0.8;
         transition: all 0.2s;
 
@@ -57,6 +57,7 @@
       }
     }
 
+    // blurry Backdrop
     &::after {
       content: '';
       position: absolute;

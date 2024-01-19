@@ -18,7 +18,7 @@
 </script>
 
 <template>
-  <div class="container">
+  <div class="container button">
     <a class="icon" @click="toggleOpen()">
       <FontAwesomeIcon icon="fas fa-gear"></FontAwesomeIcon>
     </a>

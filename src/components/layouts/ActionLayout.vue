@@ -3,10 +3,14 @@
 <template>
   <div class="layout">
     <div class="container_text">
-      <slot name="top"></slot>
+      <div class="content">
+        <slot name="top"></slot>
+      </div>
     </div>
     <div class="container_actions">
-      <slot name="bottom"></slot>
+      <div class="content">
+        <slot name="bottom"></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -20,15 +24,22 @@
     width: 100%;
     gap: 20px;
   }
+
   .container_text,
   .container_actions {
-    flex-grow: 1;
     position: relative;
+    overflow: hidden;
+    flex: 1;
+    width: 100%;
 
-    &::before {
+    & > * {
+    }
+
+    &::after {
       background-color: darkgray;
       content: '';
       position: absolute;
+      z-index: -1;
       top: 0;
       left: 0;
       width: 100%;
@@ -37,6 +48,17 @@
       border-radius: 3px;
     }
   }
+
+  .container_text {
+    flex-grow: 20;
+  }
+
   .container_actions {
+    flex-grow: 15;
+  }
+
+  .content {
+    overflow: auto;
+    height: 100%;
   }
 </style>

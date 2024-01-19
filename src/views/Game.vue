@@ -12,14 +12,22 @@
     <template v-slot:bottom>
       <div class="bottom">
         <h1>Mes action</h1>
+        <h1>Mes action</h1>
+        <h1>Mes action</h1>
+        <h1>Mes action</h1>
+        <h1>Mes action</h1>
+        <h1>Mes action</h1>
+        <h1>Mes action</h1>
+        <h1>Mes action</h1>
+        <h1>Mes action</h1>
+        <h1>Mes action</h1>
       </div>
     </template>
   </ActionLayout>
 </template>
 
 <style scoped>
-  .top {
-    height: 100%;
-    width: 100%;
+  .bottom {
+    flex-grow: 2;
   }
 </style>
