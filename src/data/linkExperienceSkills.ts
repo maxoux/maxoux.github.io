@@ -18,7 +18,7 @@ const LinksExperienceSkill = {
     'husky',
     'lerna',
     'cypress',
-    'styledcomponent',
+    'styled',
   ],
   prestashop: [
     'vue', //
@@ -30,7 +30,6 @@ const LinksExperienceSkill = {
   prochaine_escale_freelance: [
     'reactnative',
     'redux',
-    'codepush',
     'bootstrap',
     'vue',
     'vuex',
@@ -44,10 +43,9 @@ const LinksExperienceSkill = {
     'scss',
   ],
   prochaine_escale_mobile: [
-    'reactnative',
+    'reactnative', //
     'redux',
     'node',
-    'codepush',
     'moment',
   ],
   devfoundry_admin: [
@@ -62,7 +60,7 @@ const LinksExperienceSkill = {
     'php',
   ],
   clashfoot: [
-    'aws',
+    'aws', //
     'node',
     'loopback',
     'reactnative',
