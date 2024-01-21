@@ -19,10 +19,10 @@
         :category="category"
         :skills="skillByGroup[category.id]"
       ></SkillCard>
-      <span v-for="skill in skillList">
+      <!-- <span v-for="skill in skillList">
         <p>{{ skill.id }}</p>
         <img style="height: 88px; width: 88px" :src="skill.icon" />
-      </span>
+      </span> -->
     </div>
   </section>
 </template>

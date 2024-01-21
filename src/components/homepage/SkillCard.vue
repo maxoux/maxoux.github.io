@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  import { onMounted, onUnmounted, ref, defineProps } from 'vue';
+  import { onMounted, onUnmounted, ref, defineProps, computed } from 'vue';
   import { ISkill, ICategory } from '../../data/skills.ts';
   import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
   import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
@@ -16,7 +16,7 @@
   onMounted(() => {
     timerInterval = setInterval(() => {
       skillIndex.value = (skillIndex.value + 1) % props.skills.length;
-    }, 3000);
+    }, 5000);
   });
 
   onUnmounted(() => {
@@ -24,6 +24,11 @@
     clearInterval(timerInterval);
     timerInterval = null;
   });
+
+  // Preload all images at startup
+  const skillImages = computed(() =>
+    props.skills.map((skill) => (new Image().src = skill.icon)),
+  );
 </script>
 
 <template>
@@ -37,7 +42,7 @@
     </div>
     <Transition mode="out-in" name="fade">
       <div class="skill_show_container" :key="skillIndex">
-        <img :src="skills[skillIndex].icon" />
+        <img :src="skillImages[skillIndex]" />
         <h3>{{ skills[skillIndex].name }}</h3>
         <ul class="score">
           <FontAwesomeIcon
