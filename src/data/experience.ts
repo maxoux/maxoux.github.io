@@ -4,8 +4,8 @@ export interface Experience {
   missionType: 'freelance' | 'stage' | 'intern';
   description: string;
   bulletPoints?: string[];
-  dateStart: string;
-  dateEnd?: string;
+  dateStart: Date;
+  dateEnd?: Date;
 }
 
 export type TExperienceID = (typeof experienceList)[number]['id'];
@@ -32,16 +32,16 @@ const experienceList = [
       'CI/CD: Git hooks et amélioration du workflow',
       'CI/CD: Extensions d’aide à la review (TamperMonkey)',
     ],
-    dateStart: 'Janvier 2022',
-    dateEnd: 'Juin 2023',
+    dateStart: new Date('2022-01'),
+    dateEnd: new Date('2023-06'),
   },
   {
     id: 'prestashop',
     missionType: 'intern',
     company: 'Prestashop',
     description: 'Amélioration du module pré-installé Prestashop Metrics',
-    dateStart: 'Décembre 2020',
-    dateEnd: 'Juin 2021',
+    dateStart: new Date('2020-12'),
+    dateEnd: new Date('2021-06'),
   },
   {
     id: 'prochaine_escale_freelance',
@@ -54,8 +54,8 @@ const experienceList = [
       'Application: Système de notation des evenement participé',
       "Intranet: Ajout d'un système de recherche des evenements et hotels sous forme de boutique",
     ],
-    dateStart: 'Avril 2018',
-    dateEnd: 'Juillet 2020',
+    dateStart: new Date('2018-04'),
+    dateEnd: new Date('2020-07'),
   },
   {
     id: 'prochaine_escale_website',
@@ -73,15 +73,14 @@ const experienceList = [
       'Librairie des événements, hotels et devis précédemment utilisés filtrable grâce à un générateur de filtre',
       'Ajout de multiples Animations',
     ],
-    dateStart: 'Novembre 2018',
-    dateEnd: 'Avril 2020',
+    dateStart: new Date('2018-11'),
+    dateEnd: new Date('2020-04'),
   },
   {
     id: 'prochaine_escale_mobile',
     missionType: 'intern',
     company: 'Prochaine Escale',
-    description:
-      'Développement de l’appli Android/IOS à destination des clients',
+    description: 'Développement de l’appli Android/IOS à destination des clients',
     bulletPoints: [
       'Application de présentation de séminaire',
       'Affichage des prochains événements géolocalisé',
@@ -94,8 +93,8 @@ const experienceList = [
       'Gestion des mises à jours sans passer par les stores (mise à jours OTA via codePush)',
       'Gestion de notifications',
     ],
-    dateStart: 'Novembre 2018',
-    dateEnd: 'Avril 2020',
+    dateStart: new Date('2018-11'),
+    dateEnd: new Date('2020-04'),
   },
   {
     id: 'devfoundry_admin',
@@ -114,8 +113,8 @@ const experienceList = [
       'Backend Loopback',
       'Serveur frontend isomorphique React',
     ],
-    dateStart: 'Novembre 2016',
-    dateEnd: 'Septembre 2018',
+    dateStart: new Date('2016-11'),
+    dateEnd: new Date('2018-09'),
   },
   {
     id: 'clashfoot',
@@ -132,8 +131,8 @@ const experienceList = [
       'Service de découverte d’instance de streaming',
       'Serveur de relais de flux vidéo temps générée dynamiquement jusqu’à limite de bande passante utilisable',
     ],
-    dateStart: 'Juillet 2017',
-    dateEnd: 'Octobre 2018',
+    dateStart: new Date('2017-07'),
+    dateEnd: new Date('2018-10'),
   },
   {
     id: 'devfoundry_rh2',
@@ -143,15 +142,15 @@ const experienceList = [
       'Choix technologique',
       'refonte du backend d’une architecture monolithique à une architecture en micro-service.        ',
     ],
-    dateStart: 'Janvier 2017',
-    dateEnd: 'Avril 2017',
+    dateStart: new Date('2017-01'),
+    dateEnd: new Date('2017-04'),
   },
   {
     id: 'cygenio',
     missionType: 'freelance',
     description: `Conception et développement d’un serveur de location d’engins maritimes`,
-    dateStart: 'Octobre 2016',
-    dateEnd: 'Octobre 2016',
+    dateStart: new Date('2016-10'),
+    dateEnd: new Date('2016-10'),
   },
   {
     id: 'openjet',
@@ -159,8 +158,8 @@ const experienceList = [
     missionType: 'freelance',
     description: `Développement d’un serveur middleware faisant le lien entre l’utilisateur et les serveurs de bases de données. Serveur isomorphique permettant la partage d’url personnalisé pour la recherche et la location de jet privés`,
     bulletPoints: ['Serveur NodeJS isomorphique', 'Frontend en React.js'],
-    dateStart: 'Mai 2016',
-    dateEnd: 'Novembre 2016',
+    dateStart: new Date('2016-05'),
+    dateEnd: new Date('2016-11'),
   },
   {
     id: 'devfoundry_rh',
@@ -173,8 +172,8 @@ const experienceList = [
       'Configuration d’une stack gulp/Node.JS/browserify/Typescript 1.7 et Sails.JS',
       'Génération des composants React côté serveur avant remplacement par le navigateur (Isomorphisme)',
     ],
-    dateStart: 'Septembre 2015',
-    dateEnd: 'Décembre 2016',
+    dateStart: new Date('2015-09'),
+    dateEnd: new Date('2016-12'),
   },
   {
     id: 'numen',
@@ -184,7 +183,7 @@ const experienceList = [
     bulletPoints: [
       'Modification et amélioration d’un interpréteur de langage propriétaire (Balise)',
     ],
-    dateStart: 'Mai 2016',
-    dateEnd: 'Novembre 2016',
+    dateStart: new Date('2016-05'),
+    dateEnd: new Date('2016-11'),
   },
 ] as const satisfies Experience[];

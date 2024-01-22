@@ -1,12 +1,18 @@
 <script lang="ts" setup>
   import { groupBy } from 'lodash';
   import SkillCard from './SkillCard.vue';
-  import { skillList, CategoryList, ICategory } from '../../data/skills';
+  import {
+    skillList,
+    CategoryList,
+    ICategory,
+    TCategoryID,
+    ISkill,
+  } from '../../data/skills';
 
   const skillByGroup = groupBy(
     skillList.sort((a, b) => b.level - a.level),
     (skill) => skill.category,
-  );
+  ) as { [key in TCategoryID]: ISkill[] };
 </script>
 
 <template>
@@ -17,7 +23,7 @@
         v-for="category in CategoryList as ICategory[]"
         :icon="category.icon || 'cog'"
         :category="category"
-        :skills="skillByGroup[category.id]"
+        :skills="skillByGroup[category.id as TCategoryID]"
       ></SkillCard>
       <!-- <span v-for="skill in skillList">
         <p>{{ skill.id }}</p>

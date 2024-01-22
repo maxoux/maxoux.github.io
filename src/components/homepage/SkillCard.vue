@@ -6,16 +6,17 @@
 
   let timerInterval: NodeJS.Timeout | null = null;
   const skillIndex = ref<number>(0);
+  const hover = ref<boolean>(false);
 
   const props = defineProps<{
-    icon?: IconDefinition | string;
+    icon?: IconDefinition | string | [string, string];
     category: ICategory;
     skills: ISkill[];
   }>();
 
   onMounted(() => {
     timerInterval = setInterval(() => {
-      skillIndex.value = (skillIndex.value + 1) % props.skills.length;
+      if (!hover.value) skillIndex.value = (skillIndex.value + 1) % props.skills.length;
     }, 5000);
   });
 
@@ -32,7 +33,7 @@
 </script>
 
 <template>
-  <div class="card">
+  <div class="card" @mouseenter="hover = true" @mouseleave="hover = false">
     <div class="category_icon">
       <FontAwesomeIcon :icon="icon || 'house'"></FontAwesomeIcon>
     </div>
@@ -164,11 +165,22 @@
       top: 0;
       height: 100%;
       width: 100%;
-      background-color: $bgColor;
-      border-radius: 10px;
-      border-top-left-radius: 0;
+      /* border-radius: 10px; */
       z-index: -1;
       transition: all 0.3s;
+
+      /* From https://css.glass */
+      background: rgba(155, 155, 155, 0.6);
+      border-radius: 16px;
+      border-top-left-radius: 0;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5.9px);
+      -webkit-backdrop-filter: blur(5.9px);
+      border: 1px solid rgba(155, 155, 155, 1);
+    }
+
+    &:hover {
+      transform: translateY(-3px);
     }
   }
 </style>

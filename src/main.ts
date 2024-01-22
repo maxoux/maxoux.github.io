@@ -6,7 +6,8 @@ import AppVue from './App.vue';
 import './styles/index.css';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import * as Icons from '@fortawesome/free-solid-svg-icons';
+import * as IconsSolid from '@fortawesome/free-solid-svg-icons';
+import * as IconsBrand from '@fortawesome/free-brands-svg-icons';
 
 declare global {
   interface ObjectConstructor {
@@ -16,9 +17,9 @@ declare global {
 Object.typedKeys = Object.keys as any;
 
 function isIconDefinition(
-  obj: Icons.IconPack | Icons.IconDefinition | Icons.IconPrefix,
-): obj is Icons.IconDefinition {
-  return !!(obj as Icons.IconDefinition).icon;
+  obj: IconsSolid.IconPack | IconsSolid.IconDefinition | IconsSolid.IconPrefix,
+): obj is IconsSolid.IconDefinition {
+  return !!(obj as IconsSolid.IconDefinition).icon;
 }
 
 const router = createRouter({
@@ -26,11 +27,16 @@ const router = createRouter({
   routes,
 });
 
-const icons = Object.values(Icons).filter<Icons.IconDefinition>(
-  (obj): obj is Icons.IconDefinition => isIconDefinition(obj),
+const iconSolid = Object.values(IconsSolid).filter<IconsSolid.IconDefinition>(
+  (obj): obj is IconsSolid.IconDefinition => isIconDefinition(obj),
 );
 
-library.add(...icons);
+const iconBrands = Object.values(IconsBrand).filter<IconsBrand.IconDefinition>(
+  (obj): obj is IconsBrand.IconDefinition => isIconDefinition(obj),
+);
+
+library.add(...iconSolid);
+library.add(...iconBrands);
 
 const app = createApp(AppVue);
 

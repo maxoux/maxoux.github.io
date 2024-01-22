@@ -10,7 +10,7 @@ export interface ICategory {
   id: string;
   name: string;
   description: string;
-  icon?: string;
+  icon?: string | [string, string];
 }
 
 export type TSkillID = (typeof skillList)[number]['id'];
@@ -22,20 +22,40 @@ export const CategoryList = [
     name: 'Front-End',
     description:
       'Création et intégration de sites web et applications mobiles responsive, accessibles et répondant aux normes W3C.Création et intégration de sites web et applications mobiles responsive, accessibles et répondant aux normes W3C.',
-    icon: 'cog',
+    icon: 'paint-roller',
   },
   {
     id: 'backend',
     name: 'Back-End',
     description:
       'Développement de sites web et applications, création et gestion de bases de données, programmation orientée objet et modèle 3 tiers, mise en ligne.',
-    icon: 'house',
+    icon: 'database',
   },
-  { id: 'ci/cd', name: 'CI / CD', description: 'Description ci/cd' },
-  { id: 'js', name: 'JS/Node', description: 'Frameworks et outils NodeJS/Javascript' },
-  { id: 'devops', name: 'devops', description: 'Creation de réseaux virtuels, etc.' },
-  { id: 'software', name: 'Applicatif', description: 'Applications C/C++' },
-  { id: 'hobby', name: 'Hobby', description: 'Hobby entre autres' },
+  {
+    id: 'ci/cd',
+    name: 'CI / CD',
+    description: 'Description ci/cd',
+    icon: 'tools',
+  },
+  {
+    id: 'js',
+    name: 'JS/Node',
+    description: 'Frameworks et outils NodeJS/Javascript',
+    icon: ['fab', 'js'],
+  },
+  {
+    id: 'devops', //
+    name: 'devops',
+    description: 'Creation de réseaux virtuels, etc.',
+    icon: 'network-wired',
+  },
+  {
+    id: 'software',
+    name: 'Applicatif',
+    description: 'Applications C/C++',
+    icon: 'save',
+  },
+  { id: 'hobby', name: 'Hobby', description: 'Hobby entre autres', icon: 'gamepad' },
 ] as const satisfies ICategory[];
 
 export const skillList = [
@@ -159,6 +179,13 @@ export const skillList = [
     icon: '/skill/file_type_aws.svg',
   },
   {
+    id: 'kubernetes',
+    name: 'Kubernetes',
+    category: 'devops',
+    level: 2,
+    icon: '/skill/kubernetes-icon.svg',
+  },
+  {
     id: 'styled',
     name: 'Styled Component',
     category: 'frontend',
@@ -183,7 +210,7 @@ export const skillList = [
     id: 'vue',
     name: 'Vue 2/3',
     category: 'frontend',
-    level: 4,
+    level: 5,
     icon: '/skill/file_type_vue.svg',
   },
   {
@@ -238,7 +265,7 @@ export const skillList = [
   {
     id: 'react',
     name: 'React',
-    category: 'js',
+    category: 'frontend',
     level: 5,
     icon: '/skill/react.svg',
   },
@@ -252,7 +279,7 @@ export const skillList = [
   {
     id: 'node',
     name: 'NodeJS',
-    category: 'js',
+    category: 'backend',
     level: 5,
     icon: '/skill/file_type_node.svg',
   },
