@@ -1,4 +1,4 @@
-export interface Experience {
+export interface IExperience {
   id: string;
   company?: string;
   missionType: 'freelance' | 'stage' | 'intern';
@@ -10,7 +10,7 @@ export interface Experience {
 
 export type TExperienceID = (typeof experienceList)[number]['id'];
 
-const experienceList = [
+export const experienceList = [
   {
     id: 'treezor',
     missionType: 'freelance',
@@ -186,4 +186,4 @@ const experienceList = [
     dateStart: new Date('2016-05'),
     dateEnd: new Date('2016-11'),
   },
-] as const satisfies Experience[];
+] as const satisfies IExperience[];

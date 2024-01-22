@@ -3,8 +3,7 @@
   import ExtendedLayout from '../components/layouts/ExtendedLayout.vue';
   import DescriptionSection from '../components/homepage/DescriptionSection.vue';
   import SkillSection from '../components/homepage/SkillSection.vue';
-
-  defineProps<{ msg: string }>();
+  import ExperienceSection from '../components/homepage/ExperienceSection.vue';
 
   const links = [
     { path: '/about', title: 'Presentation' },
@@ -34,7 +33,7 @@
     </ExtendedLayout>
     <BasicLayout>
       <section class="sector basic sector_3">
-        <h1>Experiences</h1>
+        <ExperienceSection></ExperienceSection>
       </section>
     </BasicLayout>
   </div>
