@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "prod": "npm run build && npx http-serve --gzip ./docs && rm -rf docs"
+    "prod": "npm run build && npx http-serve ./docs -g -o"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",

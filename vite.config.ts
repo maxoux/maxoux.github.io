@@ -12,7 +12,7 @@ export default defineConfig(({ command, mode }) => {
     },
     build: {
       outDir: './docs',
-      minify: false,
+      minify: true,
     },
   };
 });

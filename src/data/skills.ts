@@ -41,7 +41,7 @@ export const CategoryList = [
     id: 'js',
     name: 'JS/Node',
     description: 'Frameworks et outils NodeJS/Javascript',
-    icon: ['fab', 'js'],
+    icon: ['fab', 'square-js'],
   },
   {
     id: 'devops', //
