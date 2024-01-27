@@ -18,6 +18,8 @@ import {
 //   return !!(obj as IconsSolid.IconDefinition).icon;
 // }
 
+export type TIconId = string | [string, string];
+
 export function initializeIcons() {
   //   const iconSolid = Object.values(IconsSolid).filter<IconsSolid.IconDefinition>(
   //     (obj): obj is IconsSolid.IconDefinition => isIconDefinition(obj),

@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-  import { onMounted, onUnmounted, ref, defineProps, computed } from 'vue';
+  import { onMounted, onUnmounted, ref, computed } from 'vue';
   import { ISkill, ICategory } from '../../data/skills.ts';
   import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
   import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+  import GlassButton from '../common/GlassButton.vue';
 
   let timerInterval: NodeJS.Timeout | null = null;
   const skillIndex = ref<number>(0);
@@ -16,7 +17,8 @@
 
   onMounted(() => {
     timerInterval = setInterval(() => {
-      if (!hover.value) skillIndex.value = (skillIndex.value + 1) % props.skills.length;
+      // if (!hover.value) skillIndex.value = (skillIndex.value + 1) % props.skills.length;
+      skillIndex.value = 0;
     }, 5000);
   });
 
@@ -38,22 +40,27 @@
       <FontAwesomeIcon :icon="icon || 'house'"></FontAwesomeIcon>
     </div>
     <h2>{{ category.name }}</h2>
-    <div class="description">
-      {{ category.description }}
-    </div>
-    <Transition mode="out-in" name="fade">
-      <div class="skill_show_container" :key="skillIndex">
-        <img :src="skillImages[skillIndex]" />
-        <h3>{{ skills[skillIndex].name }}</h3>
-        <ul class="score">
-          <FontAwesomeIcon
-            icon="star"
-            v-for="(_, index) in [, , , , ,]"
-            :class="{ enabled: skills[skillIndex].level > index }"
-          />
-        </ul>
+    <div class="left_component">
+      <div class="description">
+        {{ category.description }}
       </div>
-    </Transition>
+      <GlassButton :icon="category.icon" text="See More"></GlassButton>
+    </div>
+    <div class="right_component">
+      <Transition mode="out-in" name="fade">
+        <div class="skill_show_container" :key="skillIndex">
+          <img :src="skillImages[skillIndex]" />
+          <h3>{{ skills[skillIndex].name }}</h3>
+          <ul class="score">
+            <FontAwesomeIcon
+              icon="star"
+              v-for="(_, index) in [, , , , ,]"
+              :class="{ enabled: skills[skillIndex].level > index }"
+            />
+          </ul>
+        </div>
+      </Transition>
+    </div>
   </div>
 </template>
 
@@ -103,6 +110,21 @@
     gap: 20px;
     transition: all 0.3s;
 
+    .left_component {
+      flex: 1;
+      flex-grow: 2;
+
+      button {
+        width: clamp(150px, 80%, 100%);
+        /* width: 80%; */
+      }
+    }
+
+    .right_component {
+      flex: 1;
+      flex-grow: 1;
+    }
+
     .category_icon {
       position: absolute;
       background-color: $bgColor;
@@ -126,13 +148,11 @@
 
     .description {
       margin-top: 45px;
-      flex-grow: 6;
-      width: 60%;
+      margin-bottom: 45px;
+      min-height: 80px;
     }
 
     .skill_show_container {
-      flex-grow: 4;
-      width: 40%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -141,6 +161,7 @@
       img {
         aspect-ratio: 1;
         width: 70%;
+        max-width: 85px;
         object-fit: contain;
         margin-bottom: 10px;
       }
