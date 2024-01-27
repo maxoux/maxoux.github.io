@@ -46,7 +46,7 @@
   $missionTypeCDI: darkblue;
   $missionTypeStage: darkgreen;
 
-  $companyBackground: rgba(85, 107, 47, 0.671);
+  $companyBackground: rgba(111, 122, 92, 0.471);
 
   .fade-enter-active {
     animation: fade-in 0.5s;
@@ -81,7 +81,7 @@
         margin-top: 20px;
         transform: rotate(45deg);
         &::before {
-          z-index: -1;
+          z-index: -2;
           position: absolute;
           content: '';
           width: 400%;
@@ -89,6 +89,18 @@
           left: 0;
           top: 0;
           transform: translate(-50%, -15%);
+          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+        }
+        &::after {
+          z-index: -1;
+          position: absolute;
+          content: '';
+          width: 400%;
+          height: 2.5rem;
+          left: 0;
+          top: 0;
+          transform: translate(-50%, -7.5%);
+          border: 1px white dashed;
         }
       }
 
@@ -112,7 +124,7 @@
 
       backdrop-filter: blur(5.9px);
       -webkit-backdrop-filter: blur(5.9px);
-      border: 1px solid rgba(155, 155, 155, 1);
+      border: 1px solid rgba(95, 91, 91, 0.644);
     }
 
     .description {
@@ -141,12 +153,12 @@
       transition: all 0.3s;
 
       /* From https://css.glass */
-      background: rgba(155, 155, 155, 0.6);
-      border-radius: 8px;
+      background: rgba(59, 57, 57, 0.68);
+      border-radius: 16px;
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(5.9px);
-      -webkit-backdrop-filter: blur(5.9px);
-      border: 1px solid rgba(155, 155, 155, 1);
+      backdrop-filter: blur(8.1px);
+      -webkit-backdrop-filter: blur(8.1px);
+      border: 1px solid rgba(143, 135, 135, 0.644);
     }
 
     &:hover {
