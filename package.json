@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "prod": "npm run build && npx http-serve ./docs -g -o"
+    "prod": "npm run build && npx http-serve ./docs -g -o",
+    "inspect": "npx vite-bundle-visualizer"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
@@ -21,10 +22,12 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.202",
+    "@types/lodash.groupby": "^4.6.9",
     "@types/node": "^20.11.2",
     "@vitejs/plugin-vue": "^4.5.2",
     "eslint": "^8.56.0",
     "eslint-plugin-vue": "^9.20.1",
+    "lodash.groupby": "^4.6.0",
     "prettier": "^3.2.2",
     "sass": "^1.69.7",
     "typescript": "^5.2.2",

@@ -1,26 +1,39 @@
-<script lang="ts" setup>
-  import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-  import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-  import { IExperience } from '../../data/experience';
+<script lang="tsx" setup>
+  import { IExperience } from '../../data/experiences';
   import { ref } from 'vue';
+  import GlassButton from '../common/GlassButton.vue';
+  import { TIconId } from '../../utils/icons';
 
   const hover = ref<boolean>(false);
 
+  const missionType = {
+    freelance: 'Freelance',
+    stage: 'Stage',
+    intern: 'Interne',
+  };
+
   defineProps<{
-    icon?: IconDefinition | string | [string, string];
+    icon?: TIconId;
     experience: IExperience;
   }>();
 </script>
 
 <template>
   <div class="card" @mouseenter="hover = true" @mouseleave="hover = false">
-    <div class="experience_icon">
-      <FontAwesomeIcon :icon="icon || 'house'"></FontAwesomeIcon>
+    <div class="mission_type" :class="`mission_${experience.missionType}`">
+      <span>{{ missionType[experience.missionType] }}</span>
     </div>
-    <h2>{{ experience.company || '[NDA]' }}</h2>
-    <div class="description">
+    <h2 class="company">{{ experience.company || '[NDA]' }}</h2>
+    <p class="description">
       {{ experience.description }}
-    </div>
+    </p>
+    <ul class="bullet_list">
+      <li class="bullet_point" v-for="bullet in experience.bulletPoints">
+        {{ bullet }}
+      </li>
+    </ul>
+    <ul class="skill_list"></ul>
+    <GlassButton class="add_filter" square icon="cart-plus"></GlassButton>
   </div>
 </template>
 
@@ -29,100 +42,91 @@
   $iconSize: 20px;
   $iconContainerSize: calc($iconSize + 20px);
 
+  $missionTypeIntern: darkred;
+  $missionTypeCDI: darkblue;
+  $missionTypeStage: darkgreen;
+
+  $companyBackground: rgba(85, 107, 47, 0.671);
+
   .fade-enter-active {
     animation: fade-in 0.5s;
   }
   .fade-leave-active {
     animation: fade-out 0.5s;
   }
-  @keyframes fade-in {
-    0% {
-      transform: translateX(30%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  @keyframes fade-out {
-    0% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-      transform: translateX(-30%);
-    }
-  }
 
   .card {
     position: relative;
     aspect-ratio: 1.6;
-    width: 80%;
-    padding: 20px 30px 15px;
+    width: 100%;
+    padding: 0px 30px 30px;
     z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: $iconContainerSize;
-    z-index: 1;
-    gap: 20px;
     transition: all 0.3s;
 
-    .category_icon {
+    .mission_type {
       position: absolute;
-      background-color: $bgColor;
-      height: $iconContainerSize;
-      width: 60px;
-      border-top-left-radius: $iconSize;
-      border-top-right-radius: $iconSize;
-      top: -30px;
-      left: 0%;
+      right: 0;
+      top: 0;
+      height: 200px;
+      width: 200px;
+      font-weight: 600;
+      font-size: 1.4rem;
       display: flex;
-      align-items: center;
       justify-content: center;
-      z-index: -10;
+      overflow: hidden;
+      z-index: 10;
+
+      span {
+        position: relative;
+        margin-top: 20px;
+        transform: rotate(45deg);
+        &::before {
+          z-index: -1;
+          position: absolute;
+          content: '';
+          width: 400%;
+          height: 3rem;
+          left: 0;
+          top: 0;
+          transform: translate(-50%, -15%);
+        }
+      }
+
+      &.mission_intern > span::before {
+        background-color: darkblue;
+      }
+      &.mission_freelance > span::before {
+        background-color: darkred;
+      }
+      &.mission_stage > span::before {
+        background-color: darkgreen;
+      }
     }
 
-    h2 {
-      position: absolute;
-      margin-bottom: 15px;
-      top: 15px;
+    .company {
+      padding: 20px 30px 10px;
+      margin: 0 -30px 30px;
+      background: $companyBackground;
+      border: 1px solid rgba(155, 155, 155, 1);
+      border-radius: 8px 8px 0 0;
+
+      backdrop-filter: blur(5.9px);
+      -webkit-backdrop-filter: blur(5.9px);
+      border: 1px solid rgba(155, 155, 155, 1);
     }
 
     .description {
-      margin-top: 45px;
-      flex-grow: 6;
-      width: 60%;
+      margin-top: 0px;
     }
 
-    .skill_show_container {
-      flex-grow: 4;
-      width: 40%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-
-      img {
-        aspect-ratio: 1;
-        width: 70%;
-        object-fit: contain;
-        margin-bottom: 10px;
-      }
-
-      .score > * {
-        color: grey;
-        &.enabled {
-          color: yellow;
-        }
-      }
+    .bullet_list {
+      max-width: 80%;
     }
 
-    &:nth-child(2n) {
-      flex-direction: row-reverse;
-      text-align: right;
+    .add_filter {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
     }
 
     &:before {
@@ -138,8 +142,7 @@
 
       /* From https://css.glass */
       background: rgba(155, 155, 155, 0.6);
-      border-radius: 16px;
-      border-top-left-radius: 0;
+      border-radius: 8px;
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       backdrop-filter: blur(5.9px);
       -webkit-backdrop-filter: blur(5.9px);
@@ -151,3 +154,4 @@
     }
   }
 </style>
+../../data/experiences

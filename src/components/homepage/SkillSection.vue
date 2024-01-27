@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  import { groupBy } from 'lodash';
+  import groupBy from 'lodash.groupby';
   import SkillCard from './SkillCard.vue';
   import {
     skillList,

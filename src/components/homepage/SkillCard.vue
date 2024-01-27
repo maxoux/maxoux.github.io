@@ -17,8 +17,7 @@
 
   onMounted(() => {
     timerInterval = setInterval(() => {
-      // if (!hover.value) skillIndex.value = (skillIndex.value + 1) % props.skills.length;
-      skillIndex.value = 0;
+      if (!hover.value) skillIndex.value = (skillIndex.value + 1) % props.skills.length;
     }, 5000);
   });
 

@@ -1,6 +1,7 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSquareJs } from '@fortawesome/free-brands-svg-icons';
 import {
+  faCartPlus,
   faDatabase,
   faGamepad,
   faGear,
@@ -41,6 +42,7 @@ export function initializeIcons() {
       faGamepad,
       faGear,
       faStar,
+      faCartPlus,
     ],
   );
 

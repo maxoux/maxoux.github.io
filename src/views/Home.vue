@@ -32,10 +32,26 @@
       <SkillSection></SkillSection>
     </ExtendedLayout>
     <BasicLayout>
-      <section class="sector basic sector_3">
-        <ExperienceSection></ExperienceSection>
-      </section>
+      <ExperienceSection></ExperienceSection>
     </BasicLayout>
+    <ExtendedLayout>
+      <div>
+        <h1>Contactez moi</h1>
+        <div style="padding-bottom: 60px">
+          Est excepteur excepteur ea fugiat fugiat veniam velit mollit. Laborum tempor
+          fugiat id esse exercitation laboris minim culpa adipisicing. Veniam commodo sunt
+          nisi reprehenderit incididunt occaecat non veniam nostrud laborum. Commodo
+          exercitation ea consequat consequat laborum id qui eiusmod sunt sunt ipsum
+          cupidatat. Aute do id ad sint ullamco mollit minim eu cupidatat. Et veniam
+          cupidatat enim incididunt.
+        </div>
+      </div>
+    </ExtendedLayout>
+    <ExtendedLayout>
+      <div>
+        <h1>Footer</h1>
+      </div>
+    </ExtendedLayout>
   </div>
 </template>
 

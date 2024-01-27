@@ -1,4 +1,4 @@
-import { TExperienceID } from './experience';
+import { TExperienceID } from './experiences';
 import { TSkillID } from './skills';
 
 type ILinks = {
