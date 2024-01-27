@@ -24,21 +24,28 @@
 <style lang="scss" scoped>
   .ball {
     position: absolute;
-    top: 0%;
     left: 50%;
     background-color: red;
+    top: 0;
     width: 100px;
     height: 100px;
     z-index: -20;
     border-radius: 100%;
 
     @keyframes moveball {
+      0% {
+        top: 0%;
+      }
+      50% {
+        top: 50%;
+      }
       100% {
-        top: 20%;
+        top: 0%;
       }
     }
-    animation: moveball forwards 4s infinite;
-    animation-timing-function: linear;
+    animation: moveball forwards 10s infinite;
+    animation-timing-function: ease-in-out;
+    transform: translateY(-1500px);
   }
   .experience_section {
     padding-bottom: 60px;

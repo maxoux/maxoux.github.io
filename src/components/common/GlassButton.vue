@@ -55,12 +55,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 64px;
+      height: 50px;
       aspect-ratio: 1;
 
       svg {
         margin: 0;
-        font-size: 25px;
+        font-size: 20px;
       }
     }
 

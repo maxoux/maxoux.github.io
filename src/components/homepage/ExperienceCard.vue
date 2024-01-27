@@ -42,9 +42,9 @@
   $iconSize: 20px;
   $iconContainerSize: calc($iconSize + 20px);
 
-  $missionTypeIntern: darkred;
-  $missionTypeCDI: darkblue;
-  $missionTypeStage: darkgreen;
+  $missionTypeIntern: rgb(0, 0, 90);
+  $missionTypeFreelance: rgb(100, 20, 30);
+  $missionTypeStage: rgb(0, 56, 0);
 
   $companyBackground: rgba(111, 122, 92, 0.471);
 
@@ -105,13 +105,13 @@
       }
 
       &.mission_intern > span::before {
-        background-color: darkblue;
+        background-color: $missionTypeIntern;
       }
       &.mission_freelance > span::before {
-        background-color: darkred;
+        background-color: $missionTypeFreelance;
       }
       &.mission_stage > span::before {
-        background-color: darkgreen;
+        background-color: $missionTypeStage;
       }
     }
 
