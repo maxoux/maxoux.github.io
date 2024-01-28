@@ -46,7 +46,7 @@
   $missionTypeFreelance: rgb(100, 20, 30);
   $missionTypeStage: rgb(0, 56, 0);
 
-  $companyBackground: rgba(111, 122, 92, 0.471);
+  $companyBackground: rgba(92, 101, 122, 0.471);
 
   .fade-enter-active {
     animation: fade-in 0.5s;
