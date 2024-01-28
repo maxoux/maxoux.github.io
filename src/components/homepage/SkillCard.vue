@@ -4,6 +4,7 @@
   import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
   import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
   import GlassButton from '../common/GlassButton.vue';
+  import SkillRouletteComponent from './SkillRouletteComponent.vue';
 
   let timerInterval: NodeJS.Timeout | null = null;
   const skillIndex = ref<number>(0);
@@ -17,7 +18,7 @@
 
   onMounted(() => {
     timerInterval = setInterval(() => {
-      if (!hover.value) skillIndex.value = (skillIndex.value + 1) % props.skills.length;
+      if (!hover.value) skillIndex.value = (skillIndex.value + 3) % props.skills.length;
     }, 5000);
   });
 
@@ -28,9 +29,7 @@
   });
 
   // Preload all images at startup
-  const skillImages = computed(() =>
-    props.skills.map((skill) => (new Image().src = skill.icon)),
-  );
+  computed(() => props.skills.map((skill) => (new Image().src = skill.icon)));
 </script>
 
 <template>
@@ -39,27 +38,19 @@
       <FontAwesomeIcon :icon="icon || 'house'"></FontAwesomeIcon>
     </div>
     <h2>{{ category.name }}</h2>
-    <div class="left_component">
-      <div class="description">
-        {{ category.description }}
-      </div>
-      <GlassButton :icon="category.icon" text="See More"></GlassButton>
+    <div class="content">
+      <SkillRouletteComponent
+        :skill="skills[(skillIndex + 0) % skills.length]"
+      ></SkillRouletteComponent>
+      <SkillRouletteComponent
+        reverse
+        :skill="skills[(skillIndex + 1) % skills.length]"
+      ></SkillRouletteComponent>
+      <SkillRouletteComponent
+        :skill="skills[(skillIndex + 2) % skills.length]"
+      ></SkillRouletteComponent>
     </div>
-    <div class="right_component">
-      <Transition mode="out-in" name="fade">
-        <div class="skill_show_container" :key="skillIndex">
-          <img :src="skillImages[skillIndex]" />
-          <h3>{{ skills[skillIndex].name }}</h3>
-          <ul class="score">
-            <FontAwesomeIcon
-              icon="star"
-              v-for="(_, index) in [, , , , ,]"
-              :class="{ enabled: skills[skillIndex].level > index }"
-            />
-          </ul>
-        </div>
-      </Transition>
-    </div>
+    <GlassButton :icon="category.icon" text="See More"></GlassButton>
   </div>
 </template>
 
@@ -68,33 +59,6 @@
   $iconSize: 20px;
   $iconContainerSize: calc($iconSize + 20px);
 
-  .fade-enter-active {
-    animation: fade-in 0.5s;
-  }
-  .fade-leave-active {
-    animation: fade-out 0.5s;
-  }
-  @keyframes fade-in {
-    0% {
-      transform: translateX(30%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  @keyframes fade-out {
-    0% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-      transform: translateX(-30%);
-    }
-  }
-
   .card {
     position: relative;
     aspect-ratio: 1.6;
@@ -102,6 +66,7 @@
     padding: 20px 30px 15px;
     z-index: 1;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
     margin-top: $iconContainerSize;
@@ -109,19 +74,11 @@
     gap: 20px;
     transition: all 0.3s;
 
-    .left_component {
-      flex: 1;
-      flex-grow: 2;
-
-      button {
-        width: clamp(150px, 80%, 100%);
-        /* width: 80%; */
-      }
-    }
-
-    .right_component {
-      flex: 1;
-      flex-grow: 1;
+    .content {
+      display: flex;
+      min-height: 180px;
+      align-items: center;
+      justify-content: center;
     }
 
     .category_icon {
@@ -140,42 +97,12 @@
     }
 
     h2 {
-      position: absolute;
-      margin-bottom: 15px;
-      top: 15px;
-    }
-
-    .description {
-      margin-top: 45px;
-      margin-bottom: 45px;
-      min-height: 80px;
-    }
-
-    .skill_show_container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-
-      img {
-        aspect-ratio: 1;
-        width: 70%;
-        max-width: 85px;
-        object-fit: contain;
-        margin-bottom: 10px;
-      }
-
-      .score > * {
-        color: grey;
-        &.enabled {
-          color: yellow;
-        }
-      }
+      align-self: flex-start;
     }
 
     &:nth-child(2n) {
-      flex-direction: row-reverse;
-      text-align: right;
+      /* flex-direction: row-reverse;
+      text-align: right; */
     }
 
     &:before {

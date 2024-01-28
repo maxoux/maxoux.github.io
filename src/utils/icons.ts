@@ -5,6 +5,7 @@ import {
   faDatabase,
   faGamepad,
   faGear,
+  faHeart,
   faHouse,
   faNetworkWired,
   faPaintRoller,
@@ -43,6 +44,7 @@ export function initializeIcons() {
       faGear,
       faStar,
       faCartPlus,
+      faHeart,
     ],
   );
 

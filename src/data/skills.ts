@@ -4,6 +4,7 @@ export interface ISkill {
   category: TCategoryID;
   level: 1 | 2 | 3 | 4 | 5;
   icon: string;
+  love?: boolean;
 }
 
 export interface ICategory {
@@ -338,5 +339,20 @@ export const skillList = [
     category: 'hobby',
     level: 4,
     icon: '/skill/home-assistant.svg',
+  },
+  {
+    id: '3dprint',
+    name: 'Impression 3D',
+    category: 'hobby',
+    level: 4,
+    icon: '/skill/slic3r-prusa3d.svg',
+  },
+  {
+    id: 'pizza',
+    name: 'Pizza !',
+    category: 'hobby',
+    level: 4,
+    icon: '/skill/pizza-slice.svg',
+    love: true,
   },
 ] as const satisfies ISkill[];
